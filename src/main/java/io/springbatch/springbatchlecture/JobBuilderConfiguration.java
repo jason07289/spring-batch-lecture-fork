@@ -33,7 +33,7 @@ public class JobBuilderConfiguration {
 
     @Bean
     public Job batchJob2() {
-        return this.jobBuilderFactory.get("batchJob1")
+        return this.jobBuilderFactory.get("batchJob2")
                 .incrementer(new RunIdIncrementer())
                 .start(flow())
                 .next(step2())
