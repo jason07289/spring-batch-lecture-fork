@@ -63,12 +63,9 @@ public class FlowStepConfiguration {
     @Bean
     public Step step2() {
         return stepBuilderFactory.get("step2")
-                .tasklet(new Tasklet() {
-                    @Override
-                    public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-                        System.out.println("step2 was executed");
-                        return RepeatStatus.FINISHED;
-                    }
+                .tasklet((contribution, chunkContext) -> {
+                    System.out.println("step2 was executed");
+                    return RepeatStatus.FINISHED;
                 })
                 .build();
     }
