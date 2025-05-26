@@ -44,7 +44,9 @@ public class ChunkConfiguration {
     public Step step1() {
         return stepBuilderFactory.get("step1")
                 .<String, String>chunk(2)
+                //reader -> 전체 리스트, item을 담은 chunk를 processor로 전달
                 .reader(new ListItemReader<>(Arrays.asList("item1", "item2", "item3","item4", "item5", "item6")))
+                //가공 후 output chunk에 list를 담는다.
                 .processor(new ItemProcessor<String, String>() {
                     @Override
                     public String process(String item) throws Exception {
@@ -53,6 +55,7 @@ public class ChunkConfiguration {
                         return "my_" + item;
                     }
                 })
+                //writer는 list타입으로 받고 있다.
                 .writer(new ItemWriter<String>() {
                     @Override
                     public void write(List<? extends String> items) throws Exception {
