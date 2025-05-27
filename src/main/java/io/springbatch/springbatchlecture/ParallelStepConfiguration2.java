@@ -1,4 +1,4 @@
-/*
+
 package io.springbatch.springbatchlecture;
 
 import lombok.RequiredArgsConstructor;
@@ -95,8 +95,8 @@ public class ParallelStepConfiguration2 {
         executor.setCorePoolSize(4);
         executor.setMaxPoolSize(8);
         executor.setThreadNamePrefix("parallel-thread-");
+
         return executor;
     }
 }
 
-*/
